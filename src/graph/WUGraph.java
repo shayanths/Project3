@@ -10,9 +10,10 @@ import list.*;
  */
 
 public class WUGraph {
-	
-	DList[] adjList;
+	//vertices represented as an array and as a DList
+	//the array is the hash table that the objects get hashed to
 	DList vertices;
+	DList[] vertList;
 	int numVertices;
 	int numEdges;
 
@@ -21,7 +22,9 @@ public class WUGraph {
    *
    * Running time:  O(1).
    */
-  public WUGraph();
+  public WUGraph(){
+	  DList
+  }
 
   /**
    * vertexCount() returns the number of vertices in the graph.
@@ -62,7 +65,9 @@ public class WUGraph {
    *
    * Running time:  O(1).
    */
-  public void addVertex(Object vertex);
+  public void addVertex(Object vertex){
+	  
+  }
 
   /**
    * removeVertex() removes a vertex from the graph.  All edges incident on the

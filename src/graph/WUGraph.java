@@ -165,7 +165,23 @@ public class WUGraph {
    *
    * Running time:  O(1).
    */
-  public void addEdge(Object u, Object v, int weight);
+  public void addEdge(Object u, Object v, int weight){
+	  VertexPair vpair = new VertexPair(u,v);
+	  Entry e1 = edgesTable.find(vpair);
+	  if (e1 == null){
+		 e1 = edgesTable.insert(vpair, weight);
+		 numEdges += 1;
+		 ((DList) verticesTable.find(u).value()).insertBack(e1);
+		 if (u != v){
+			 ((DList) verticesTable.find(v).value()).insertBack(e1);
+		 }
+		 e1.e1 = (DListNode) ((DList) verticesTable.find(u).value()).back();
+		 e1.e2 = (DListNode) ((DList) verticesTable.find(v).value()).back();
+	  }
+	  else{
+		  e1.weightchange(weight);
+	  }
+  }
 
   /**
    * removeEdge() removes an edge (u, v) from the graph.  If either of the

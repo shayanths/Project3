@@ -10,10 +10,16 @@ import list.*;
  */
 
 public class WUGraph {
+<<<<<<< HEAD
 	//vertices represented as an array and as a DList
 	//the array is the hash table that the objects get hashed to
 	DList vertices;
 	DList[] vertList;
+=======
+	
+	HashTableChained verticesTable, edgesTable;
+	DList vertexlist;
+>>>>>>> getVertices and addVertex push
 	int numVertices;
 	int numEdges;
 
@@ -23,7 +29,15 @@ public class WUGraph {
    * Running time:  O(1).
    */
   public WUGraph(){
+<<<<<<< HEAD
 	  DList
+=======
+	  verticesTable = new HashTableChained();
+	  edgesTable = new HashTableChained();
+	  vertexlist = new DList();
+	  numVertices = 0;
+	  numEdges = 0;
+>>>>>>> getVertices and addVertex push
   }
 
   /**
@@ -56,7 +70,21 @@ public class WUGraph {
    *
    * Running time:  O(|V|).
    */
-  public Object[] getVertices();
+  public Object[] getVertices(){
+	  Object[] vertexarray = new Object[vertexlist.length()];
+	  int element = 0;
+	  DListNode node = (DListNode) vertexlist.front();
+	  while (node.isValidNode()){
+		  try{
+			  vertexarray[element] = node.item();
+			  node = (DListNode) node.next();
+			  element += 1;
+		  }catch(InvalidNodeException e1){
+			  System.out.println("Invalid Node at " + e1);
+		  }
+	  }
+	  return vertexarray;
+  }
 
   /**
    * addVertex() adds a vertex (with no incident edges) to the graph.  The
@@ -66,7 +94,15 @@ public class WUGraph {
    * Running time:  O(1).
    */
   public void addVertex(Object vertex){
+<<<<<<< HEAD
 	  
+=======
+	  if (!isVertex(vertex)){
+		  vertexlist.insertBack(vertex);
+		  verticesTable.insert(vertex, new DList()).VertexList = (DListNode) vertexlist.back();
+		  numVertices++;
+	  }
+>>>>>>> getVertices and addVertex push
   }
 
   /**
@@ -84,7 +120,9 @@ public class WUGraph {
    *
    * Running time:  O(1).
    */
-  public boolean isVertex(Object vertex);
+  public boolean isVertex(Object vertex){
+	  
+  }
 
   /**
    * degree() returns the degree of a vertex.  Self-edges add only one to the
@@ -159,6 +197,8 @@ public class WUGraph {
    *
    * Running time:  O(1).
    */
-  public int weight(Object u, Object v);
-
+  public int weight(Object u, Object v){
+	  
+  
+  }
 }

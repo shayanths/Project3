@@ -1,6 +1,7 @@
 /* Entry.java */
 
 package dict;
+import list.DListNode;
 
 /**
  *  A class for dictionary entries.
@@ -13,6 +14,10 @@ public class Entry {
 
   protected Object key;
   protected Object value;
+  public DListNode e1;
+  public DListNode e2;
+  public DListNode VertexList;
+ 
 
   public Object key() {
     return key;
@@ -20,6 +25,10 @@ public class Entry {
 
   public Object value() {
     return value;
+  }
+  
+  public void weightchange(int w){
+	 value = w;
   }
 
 }

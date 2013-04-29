@@ -1,6 +1,7 @@
+package graph;
 /* WUGraph.java */
 
-package graph;
+
 import dict.*;
 import list.*;
 
@@ -10,16 +11,11 @@ import list.*;
  */
 
 public class WUGraph {
-<<<<<<< HEAD
 	//vertices represented as an array and as a DList
 	//the array is the hash table that the objects get hashed to
-	DList vertices;
-	DList[] vertList;
-=======
-	
+
 	HashTableChained verticesTable, edgesTable;
 	DList vertexlist;
->>>>>>> getVertices and addVertex push
 	int numVertices;
 	int numEdges;
 
@@ -29,15 +25,12 @@ public class WUGraph {
    * Running time:  O(1).
    */
   public WUGraph(){
-<<<<<<< HEAD
-	  DList
-=======
 	  verticesTable = new HashTableChained();
 	  edgesTable = new HashTableChained();
 	  vertexlist = new DList();
 	  numVertices = 0;
 	  numEdges = 0;
->>>>>>> getVertices and addVertex push
+
   }
 
   /**
@@ -94,15 +87,11 @@ public class WUGraph {
    * Running time:  O(1).
    */
   public void addVertex(Object vertex){
-<<<<<<< HEAD
-	  
-=======
 	  if (!isVertex(vertex)){
 		  vertexlist.insertBack(vertex);
 		  verticesTable.insert(vertex, new DList()).VertexList = (DListNode) vertexlist.back();
 		  numVertices++;
 	  }
->>>>>>> getVertices and addVertex push
   }
 
   /**
@@ -121,6 +110,12 @@ public class WUGraph {
    * Running time:  O(1).
    */
   public boolean isVertex(Object vertex){
+	  if (verticesTable.find(vertex) != null){
+		  return true;
+	  }
+	  else{
+		  return false;
+	  }
 	  
   }
 
@@ -131,7 +126,15 @@ public class WUGraph {
    *
    * Running time:  O(1).
    */
-  public int degree(Object vertex);
+  public int degree(Object vertex){
+	  Entry e1 = verticesTable.find(vertex);
+	  if (e1 == null){
+		  return 0;
+	  }
+	  else{
+		  return ((List)e1.value()).length();
+	  }
+  }
 
   /**
    * getNeighbors() returns a new Neighbors object referencing two arrays.  The
@@ -181,7 +184,17 @@ public class WUGraph {
    *
    * Running time:  O(1).
    */
-  public boolean isEdge(Object u, Object v);
+  public boolean isEdge(Object u, Object v){
+	  VertexPair vpair = new VertexPair(u,v);
+	  Entry e1 = edgesTable.find(vpair);
+	  if (e1 == null){
+		  return false;
+	  }
+	  else{
+		  return true;
+	  }
+	  
+  }
 
   /**
    * weight() returns the weight of (u, v).  Returns zero if (u, v) is not
@@ -198,7 +211,13 @@ public class WUGraph {
    * Running time:  O(1).
    */
   public int weight(Object u, Object v){
-	  
-  
+	  VertexPair vpair = new VertexPair(u,v);
+	  Entry e1 = edgesTable.find(vpair);
+	  if (e1 == null){
+		  return 0;
+	  }
+	  else{
+		  return (Integer) e1.value();
+	  }
   }
 }

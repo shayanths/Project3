@@ -1,4 +1,4 @@
-/* WUGTest.java */
+
 
 /**
  * The WUGTest class tests the WUGraph class.

@@ -17,21 +17,21 @@ public class Kruskal {
 	 */
 	public static WUGraph minSpanTree(WUGraph g){ 
 		WUGraph t = new WUGraph(); 
-		int indexedge = 0;
+		int indexEdge = 0;
 		int counter = 0;
 		Object[] gVert = g.getVertices();
-		Object[] edgearray = new Object[2];
-		Edge[] edgesobjects = new Edge[2 * g.edgeCount() + 1];
+		Object[] edgeArray = new Object[2];
+		Edge[] edgesObjects = new Edge[2 * g.edgeCount() + 1];
 		for (int i = 0; i < gVert.length; i++) {
 			Neighbors neighbors = g.getNeighbors(gVert[i]);
 				for (int j = 0; j < neighbors.neighborList.length; j++) {
-						edgesobjects[indexedge] = new Edge(gVert[i], neighbors.neighborList[j], neighbors.weightList[j]);
-						indexedge += 1;
+						edgesObjects[indexEdge] = new Edge(gVert[i], neighbors.neighborList[j], neighbors.weightList[j]);
+						indexEdge += 1;
 				}
 			}
-		edgearray[0] = edgesobjects;
-		edgearray[1] = indexedge - 1;
-		Object[] IndexEdges = edgearray;
+		edgeArray[0] = edgesObjects;
+		edgeArray[1] = indexEdge - 1;
+		Object[] IndexEdges = edgeArray;
 		Edge[] edges = (Edge []) IndexEdges[0];
 		HashTableChained gTable = new HashTableChained(gVert.length);
 		DisjointSets sets = new DisjointSets(gTable.size());

@@ -5,6 +5,7 @@
  */
 
 import graph.*;
+
 import java.util.*;
 
 public class KruskalTest {
@@ -135,7 +136,7 @@ public class KruskalTest {
 //  }
 
     System.out.println("Finding the minimum spanning tree.");
-    t = Kruskal.minSpanTree(g);
+    //t = Kruskal.minSpanTree(g);
 
 //  for (i = 0; i < vertArray.length; i++) {
 //    for (j = 0; j < vertArray.length; j++) {
@@ -148,7 +149,7 @@ public class KruskalTest {
 //    System.out.println();
 //  }
 
-    DFSTest(g, t, vertArray);
+    //DFSTest(g, t, vertArray);
 
     if (tree) {
       System.out.println("One point for creating a tree.");

@@ -64,19 +64,19 @@ public class WUGraph {
    * Running time:  O(|V|).
    */
   public Object[] getVertices(){
-	  Object[] vertexarray = new Object[vertexlist.length()];
+	  Object[] vertexArray = new Object[vertexlist.length()];
 	  int element = 0;
 	  DListNode node = (DListNode) vertexlist.front();
 	  while (node.isValidNode()){
 		  try{
-			  vertexarray[element] = node.item();
+			  vertexArray[element] = node.item();
 			  node = (DListNode) node.next();
 			  element += 1;
 		  }catch(InvalidNodeException e1){
 			  System.out.println("Invalid Node at " + e1);
 		  }
 	  }
-	  return vertexarray;
+	  return vertexArray;
   }
 
   /**

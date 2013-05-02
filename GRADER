@@ -1,0 +1,8 @@
+We used a HashTable to represent the vertices of the graph and another HashTable to represent the edges. We also used a separate DList to store the external vertices, which we stored in the veritces HashTable.
+
+We defined an Edge class to represent an edge, which contains two Objects (one for each vertex) and the weight of the edge. This Edge class was used to store and sort the edges in Kruskal's algorithm. We changed quicksort to sort not by an integer array but by an edge array, taking the weight of each edge in the array passed in to sort the array.
+
+
+To make removeVertex run in O(d) time, we implemented a while loop that checks whether the DList that contains the vertices in the external graph is the same as the vertex in the Hashtable of the internal. The HashTable allows us to find the vertex in constant time, while we search for the vertex in the DList. Searching the vertex in the DList will be in O(d) time because we have to search through the degrees of each vertex before finding the "vertex" to remove. If there is a match, then the vertex is removed from the HashTable and the DList. 
+
+getVertices runs in O(|V|) time because we used a doubly linked list to store the vertices, so traversing the DList takes n time where n is the length of the DList, which in this case is |V|.

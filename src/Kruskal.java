@@ -14,8 +14,10 @@ public class Kruskal {
 	/**
 	 * minSpanTree() returns a WUGraph that represents the minimum spanning tree
 	 * of the WUGraph g.  The original WUGraph g is NOT changed.
+	 * @param g the WUGraph to be manipulated
+	 * @return a minimum spanning tree of g
 	 */
-	public static WUGraph minSpanTree(WUGraph g){ 
+    public static WUGraph minSpanTree(WUGraph g){ 
 		WUGraph t = new WUGraph(); 
 		int indexEdge = 0;
 		int counter = 0;
@@ -25,7 +27,9 @@ public class Kruskal {
 		for (int i = 0; i < gVert.length; i++) {
 			Neighbors neighbors = g.getNeighbors(gVert[i]);
 				for (int j = 0; j < neighbors.neighborList.length; j++) {
-						edgesObjects[indexEdge] = new Edge(gVert[i], neighbors.neighborList[j], neighbors.weightList[j]);
+						edgesObjects[indexEdge] = new Edge(gVert[i], neighbors.neighborList[j], neighbors.weightList[j]); 
+						// Error here on second run of KruskalTest .. Null Pointer Exception ... 
+						// The Edge class is being filled with null values instead of the values from gVert, neighborlist, and weightlist 
 						indexEdge += 1;
 				}
 			}
@@ -41,7 +45,7 @@ public class Kruskal {
 			counter += 1;
 		}
 		quicksort(edges, 0, (Integer) IndexEdges[1]);
-		for (int i = 0; i < (Integer) IndexEdges[1] + 1; i++){ // Need to add one in order to access every element
+		for (int i = 0; i < (Integer) IndexEdges[1] +1; i++){ // Need to add one in order to access every element
 			int v1 = sets.find((Integer) (gTable.find(edges[i].v1()).value()));
 			int v2 = sets.find((Integer) (gTable.find(edges[i].v2()).value()));
 			if (v1 != v2){
@@ -55,14 +59,10 @@ public class Kruskal {
 
 	
 	/**
-	 * Method to swap two ints in an array.
-	 * 
-	 * @param a
-	 *            an array of ints.
-	 * @param index1
-	 *            the index of the first int to be swapped.
-	 * @param index2
-	 *            the index of the second int to be swapped.
+	 * Method to swap two ints in an array
+	 * @param a an array of ints.
+	 * @param index1 the index of the first int to be swapped.
+	 * @param index2 the index of the second int to be swapped.
 	 **/
 	public static void swapReferences(Edge[] a, int index1, int index2) {
 		Edge tmp = a[index1];
@@ -71,7 +71,7 @@ public class Kruskal {
 	}
 
 	/**
-	 * This is a generic version of C.A.R Hoare's Quick Sort algorithm. This
+	 * This is a version of C.A.R Hoare's Quick Sort algorithm modified to sort Edges. This
 	 * will handle arrays that are already sorted, and arrays with duplicate
 	 * keys.
 	 * 
@@ -80,12 +80,9 @@ public class Kruskal {
 	 * lowest index or left and highest index or right. The first time you call
 	 * this function it will be with the parameters 0, a.length - 1.
 	 * 
-	 * @param a
-	 *            an integer array
-	 * @param lo0
-	 *            left boundary of array partition
-	 * @param hi0
-	 *            right boundary of array partition
+	 * @param a an Edge array to be sorted
+	 * @param lo0 left boundary of array partition
+	 * @param hi0 right boundary of array partition
 	 **/
 	private static void quicksort(Edge a[], int lo0, int hi0) {
 		int lo = lo0;
